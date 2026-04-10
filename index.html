@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CodeBronx</title>
+  <meta
+    name="description"
+    content="CodeBronx helps schools integrate AI, computational thinking, and computer science into everyday instruction."
+  />
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --bg-soft: #11111a;
+      --card: rgba(255, 255, 255, 0.04);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --text: #f5f7fb;
+      --muted: #b4bccb;
+      --accent: #72f2c0;
+      --accent-2: #7aa8ff;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+      --radius: 20px;
+      --max: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(114, 242, 192, 0.08), transparent 28%),
+        radial-gradient(circle at top right, rgba(122, 168, 255, 0.10), transparent 24%),
+        linear-gradient(180deg, #09090d 0%, #0d0f16 100%);
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(100% - 2rem, var(--max));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(14px);
+      background: rgba(10, 10, 15, 0.72);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1rem 0;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      font-size: 0.95rem;
+      color: #08110e;
+      background: linear-gradient(135deg, var(--accent), #9effdd);
+      box-shadow: 0 0 30px rgba(114, 242, 192, 0.25);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.25rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 0.95rem;
+      transition: 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      border-radius: 999px;
+      padding: 0.9rem 1.2rem;
+      font-weight: 700;
+      border: 1px solid transparent;
+      transition: 0.2s ease;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), #a0ffe1);
+      color: #06110d;
+      box-shadow: 0 8px 24px rgba(114, 242, 192, 0.2);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 12px 28px rgba(114, 242, 192, 0.28);
+    }
+
+    .btn-secondary {
+      border-color: rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--text);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(255, 255, 255, 0.16);
+    }
+
+    .hero {
+      padding: 5.5rem 0 4rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      color: var(--accent);
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      margin: 0 0 1rem;
+      font-size: clamp(2.4rem, 5vw, 4.8rem);
+      line-height: 0.96;
+      letter-spacing: -0.04em;
+    }
+
+    .hero p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.08rem;
+      max-width: 640px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 0.9rem;
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
+    }
+
+    .hero-note {
+      margin-top: 1rem;
+      font-size: 0.92rem;
+      color: #8f98aa;
+    }
+
+    .hero-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+      border: 1px solid var(--card-border);
+      border-radius: 28px;
+      padding: 1.25rem;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(135deg, rgba(114,242,192,0.08), transparent 40%),
+        linear-gradient(225deg, rgba(122,168,255,0.10), transparent 45%);
+      pointer-events: none;
+    }
+
+    .mock-window {
+      position: relative;
+      background: #090c12;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
+      padding: 1rem;
+      min-height: 320px;
+    }
+
+    .mock-top {
+      display: flex;
+      gap: 0.4rem;
+      margin-bottom: 1rem;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.18);
+    }
+
+    .signal {
+      display: inline-block;
+      font-size: 0.78rem;
+      padding: 0.35rem 0.6rem;
+      background: rgba(114, 242, 192, 0.1);
+      border: 1px solid rgba(114, 242, 192, 0.22);
+      border-radius: 999px;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .loop {
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    .loop-step {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      padding: 0.85rem 0.95rem;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .loop-num {
+      width: 34px;
+      height: 34px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      color: #07110d;
+      background: linear-gradient(135deg, var(--accent), #a8ffe5);
+      flex: 0 0 auto;
+    }
+
+    .loop-step strong {
+      display: block;
+      font-size: 0.95rem;
+    }
+
+    .loop-step span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    section {
+      padding: 1.5rem 0 4rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 3vw, 2.7rem);
+      letter-spacing: -0.03em;
+      margin: 0 0 0.75rem;
+    }
+
+    .section-copy {
+      color: var(--muted);
+      max-width: 720px;
+      margin: 0 0 2rem;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 1.3rem;
+      box-shadow: var(--shadow);
+    }
+
+    .card h3 {
+      margin: 0 0 0.6rem;
+      font-size: 1.1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.97rem;
+    }
+
+    .proof-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .proof-stat {
+      font-size: 2rem;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.04em;
+      margin-bottom: 0.45rem;
+      color: var(--accent);
+    }
+
+    .proof-label {
+      font-size: 0.88rem;
+      color: #94a0b5;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.8rem;
+    }
+
+    .proof-list {
+      padding-left: 1rem;
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .proof-list li + li {
+      margin-top: 0.55rem;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    .step-number {
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      background: rgba(114, 242, 192, 0.12);
+      border: 1px solid rgba(114, 242, 192, 0.22);
+      color: var(--accent);
+    }
+
+    .cta {
+      padding-bottom: 5rem;
+    }
+
+    .cta-box {
+      background:
+        linear-gradient(135deg, rgba(114,242,192,0.10), rgba(122,168,255,0.08)),
+        rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 28px;
+      padding: 2rem;
+      box-shadow: var(--shadow);
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .cta-box h2 {
+      margin: 0 0 0.4rem;
+      font-size: clamp(1.7rem, 3vw, 2.5rem);
+      letter-spacing: -0.03em;
+    }
+
+    .cta-box p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 650px;
+    }
+
+    footer {
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding: 1.25rem 0 2rem;
+      color: #8994a8;
+      font-size: 0.92rem;
+    }
+
+    .footer-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 920px) {
+      .hero-grid,
+      .proof-grid,
+      .grid-3,
+      .steps {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 4.5rem;
+      }
+
+      h1 {
+        max-width: 12ch;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav-links {
+        width: 100%;
+        justify-content: flex-start;
+      }
+
+      .cta-box {
+        padding: 1.4rem;
+      }
+
+      .hero-card {
+        padding: 1rem;
+      }
+
+      .mock-window {
+        min-height: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container nav">
+      <a class="brand" href="#">
+        <span class="brand-mark">CB</span>
+        <span>CodeBronx</span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#services">What We Do</a>
+        <a href="#proof">Proof</a>
+        <a href="#process">How It Works</a>
+        <a class="btn btn-secondary" href="mailto:hello@codebronx.org">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Tech-forward learning. Real school implementation.</div>
+          <h1>We help schools make AI and computer science useful in real classrooms.</h1>
+          <p>
+            CodeBronx supports schools and organizations with practical strategy, teacher training,
+            and classroom-ready implementation. No fluff. No disconnected tech hype. Just work that
+            actually transfers into instruction.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="mailto:hello@codebronx.org?subject=CodeBronx Inquiry">
+              Book a Call
+            </a>
+            <a class="btn btn-secondary" href="#proof">See the Work</a>
+          </div>
+
+          <div class="hero-note">
+            Built for schools, nonprofits, and education teams trying to move from ideas to actual implementation.
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <div class="mock-window">
+            <div class="mock-top">
+              <span class="dot"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+            </div>
+
+            <div class="signal">CodeBronx Approach</div>
+
+            <div class="loop">
+              <div class="loop-step">
+                <div class="loop-num">1</div>
+                <div>
+                  <strong>Assess</strong>
+                  <span>Find where instruction, tools, and teacher capacity actually stand.</span>
+                </div>
+              </div>
+
+              <div class="loop-step">
+                <div class="loop-num">2</div>
+                <div>
+                  <strong>Design</strong>
+                  <span>Build practical supports that fit the school day and existing curriculum.</span>
+                </div>
+              </div>
+
+              <div class="loop-step">
+                <div class="loop-num">3</div>
+                <div>
+                  <strong>Implement</strong>
+                  <span>Train educators and move strategies into classrooms without overcomplicating it.</span>
+                </div>
+              </div>
+
+              <div class="loop-step">
+                <div class="loop-num">4</div>
+                <div>
+                  <strong>Refine</strong>
+                  <span>Use feedback, artifacts, and observation to improve what actually gets used.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="container">
+        <h2 class="section-title">What We Do</h2>
+        <p class="section-copy">
+          CodeBronx helps education teams bridge the gap between vision and execution. The focus is practical integration,
+          educator support, and systems that schools can actually sustain.
+        </p>
+
+        <div class="grid-3">
+          <article class="card">
+            <h3>Strategic Planning</h3>
+            <p>
+              Support for school and district teams building realistic AI, computational thinking,
+              and computer science implementation plans.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Teacher Training</h3>
+            <p>
+              Professional learning that gives teachers concrete strategies, usable models,
+              and classroom-ready approaches instead of vague inspiration.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Classroom Integration</h3>
+            <p>
+              Practical lesson extensions, instructional routines, and coaching support that connect
+              technology to literacy, problem solving, and real student thinking.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="proof">
+      <div class="container">
+        <h2 class="section-title">Proof, Not Hype</h2>
+        <p class="section-copy">
+          Replace these with your real numbers, schools, quotes, or project outcomes. This section matters more than most people think.
+        </p>
+
+        <div class="proof-grid">
+          <article class="card">
+            <div class="proof-label">Sample Result</div>
+            <div class="proof-stat">20+</div>
+            <p>
+              Teachers developed and tested integrated lesson extensions that connected computational thinking
+              to existing literacy instruction instead of treating CS like a disconnected add-on.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="proof-label">Sample Result</div>
+            <div class="proof-stat">K–8</div>
+            <p>
+              School support designed across grade bands with a focus on implementation, transfer to instruction,
+              and educator confidence with emerging technology.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>What changed</h3>
+            <ul class="proof-list">
+              <li>Teachers left with usable classroom strategies, not just slide decks.</li>
+              <li>School teams had a clearer path from vision to actual instructional rollout.</li>
+              <li>Technology integration was tied to real learning goals.</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h3>Example engagement</h3>
+            <ul class="proof-list">
+              <li>Professional development and implementation support for school-based teams</li>
+              <li>Lesson design systems that fit existing curriculum structures</li>
+              <li>Coaching and planning support for sustainable rollout</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="process">
+      <div class="container">
+        <h2 class="section-title">How It Works</h2>
+        <p class="section-copy">
+          Keep this simple. People buy clarity. They do not buy confusion.
+        </p>
+
+        <div class="steps">
+          <article class="card">
+            <div class="step-number">01</div>
+            <h3>Assess the current reality</h3>
+            <p>
+              We look at what is already happening, what is missing, and where support is actually needed.
+              No fake readiness. No guessing.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="step-number">02</div>
+            <h3>Build the right support</h3>
+            <p>
+              We design training, planning, and implementation supports that fit the context,
+              staff capacity, and instructional goals.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="step-number">03</div>
+            <h3>Move it into practice</h3>
+            <p>
+              We help turn the work into something teachers and leaders can actually use,
+              refine, and sustain over time.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="container">
+        <div class="cta-box">
+          <div>
+            <h2>Bring CodeBronx into your school or program.</h2>
+            <p>
+              Start with a conversation about your goals, your current reality, and what support would actually make sense.
+            </p>
+          </div>
+
+          <a class="btn btn-primary" href="mailto:hello@codebronx.org?subject=Interested in CodeBronx">
+            Start the Conversation
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-row">
+      <div>© 2026 CodeBronx. All rights reserved.</div>
+      <div>
+        <a href="mailto:hello@codebronx.org">hello@codebronx.org</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
