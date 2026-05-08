@@ -1,76 +1,90 @@
-<p>&nbsp;</p>
+---
+layout: default
+title: ""
+permalink: /
+---
 
-<header class="topbar">
-  <div class="container nav">
-    <a class="brand" href="#">
-      <span class="brand-mark">CB</span>
-      CodeBronx
-    </a>
-    <nav class="nav-links">
-      <a href="#services">What We Do</a>
-      <a href="#proof">Proof</a>
-      <a href="#process">How It Works</a>
-      <a class="btn btn-secondary" href="mailto:felix@codebronx.org">Contact</a>
-    </nav>
-  </div>
-</header>
+<style>
+  /* CodeBronx homepage overrides */
+  #breadcrumb,
+  .breadcrumb,
+  .page-title,
+  .post-title,
+  .dynamic-title,
+  main h1:first-child,
+  .content h1:first-child {
+    display: none !important;
+  }
+
+  .container,
+  .hero .container,
+  .hero-grid {
+    max-width: 1120px !important;
+    width: min(1120px, calc(100vw - 48px)) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  .hero {
+    padding-top: 1.25rem;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .hero-card,
+  .mock-window {
+    width: 100%;
+  }
+
+  @media (max-width: 860px) {
+    .container,
+    .hero .container,
+    .hero-grid {
+      width: min(100%, calc(100vw - 32px)) !important;
+    }
+
+    .hero-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
 
 <section class="hero">
   <div class="container hero-grid">
     <div>
-      <div class="eyebrow">Computational thinking. Computing education. Real school integration.</div>
-      <h1>We help schools strengthen computational thinking and computing education through meaningful classroom integration.</h1>
+      <div class="eyebrow">Bronx-based • Classroom-ready • AI-era instruction</div>
+      <h1>Practical computing education for K–12 schools.</h1>
       <p>
-        CodeBronx supports schools and organizations in strengthening computational thinking and computing education through practical integration with core content areas. We help educators use computing concepts to promote learning, deepen instruction, and create stronger connections across classrooms, technology programs, and schoolwide priorities.
+        CodeBronx helps schools turn AI literacy and computer science from abstract initiatives into classroom-ready instruction.
       </p>
       <div class="hero-actions">
-        <a class="btn btn-primary" href="mailto:felix@codebronx.org?subject=CodeBronx Inquiry">Book a Call</a>
-        <a class="btn btn-secondary" href="#proof">See the Work</a>
-      </div>
-      <div class="hero-note">
-        Built for schools, nonprofits, and education teams looking to strengthen instruction, improve computing education, and connect learning across subjects.
+        <a class="btn btn-primary" href="mailto:felix@codebronx.org?subject=CodeBronx Consultation">📅 Book a Consultation</a>
+        <a class="btn btn-secondary" href="#services">View Services</a>
       </div>
     </div>
 
     <div class="hero-card">
-      <div class="mock-window">
-        <div class="mock-top">&nbsp;</div>
-        <div class="signal">CodeBronx Approach</div>
-        <div class="loop">
-          <div class="loop-step">
-            <div class="loop-num">1</div>
-            <div>
-              <strong>Assess</strong>
-              Evaluate how computational thinking, computing education, and technology instruction currently show up across classrooms and programs.
-            </div>
-          </div>
-
-          <div class="loop-step">
-            <div class="loop-num">2</div>
-            <div>
-              <strong>Design</strong>
-              Build practical supports, lesson structures, and project ideas that connect computing with academic content and school priorities.
-            </div>
-          </div>
-
-          <div class="loop-step">
-            <div class="loop-num">3</div>
-            <div>
-              <strong>Implement</strong>
-              Support educators in integrating computational thinking into instruction and strengthening learning experiences in technology classes.
-            </div>
-          </div>
-
-          <div class="loop-step">
-            <div class="loop-num">4</div>
-            <div>
-              <strong>Refine</strong>
-              Use feedback, student work, and instructional reflection to improve implementation and strengthen coherence across the school.
-            </div>
-          </div>
-        </div>
-      </div>
+      <h3>What we deliver</h3>
+      <ul class="proof-list">
+        <li>Practical professional development</li>
+        <li>AI literacy</li>
+        <li>CT integration</li>
+        <li>Schoolwide implementation</li>
+      </ul>
     </div>
+  </div>
+
+  <div class="container hero-note">
+    <strong>Working with:</strong>
+    <span>Principals</span>
+    <span>District Leaders</span>
+    <span>Teachers</span>
+    <span>Youth Programs</span>
   </div>
 </section>
 
@@ -85,21 +99,21 @@
       <article class="card">
         <h3>Computational Thinking Integration</h3>
         <p>
-          We support educators in embedding computational thinking into subjects like ELA, math, and other content areas so students can build problem solving, reasoning, and structured thinking through everyday instruction.
+          We support educators in embedding computational thinking into subjects like ELA, math, and other content areas so students build problem solving, reasoning, and structured thinking through everyday instruction.
         </p>
       </article>
 
       <article class="card">
-        <h3>Computing Education Program Guidance</h3>
+        <h3>AI Literacy & Computing Education</h3>
         <p>
-          We help schools add, strengthen, or modify current computing education and technology programming so it is more intentional, instructionally strong, and aligned to broader learning goals.
+          We help schools turn AI and computing concepts into practical instruction that teachers can actually use with students.
         </p>
       </article>
 
       <article class="card">
         <h3>Project Curation Across Subjects</h3>
         <p>
-          We curate and design interdisciplinary projects that connect computing, school themes, and academic content, helping students apply computing concepts in meaningful and connected ways.
+          We curate and design interdisciplinary projects that connect computing, school themes, and academic content in meaningful ways.
         </p>
       </article>
     </div>
@@ -124,28 +138,10 @@
 
       <article class="card">
         <div class="proof-label">Grade Band Support</div>
-        <div class="proof-stat">K&ndash;8</div>
+        <div class="proof-stat">K–8</div>
         <p>
           School support was designed across grade bands with a focus on implementation, stronger instruction, and coherent computing education experiences across classrooms.
         </p>
-      </article>
-
-      <article class="card">
-        <h3>What changed</h3>
-        <ul class="proof-list">
-          <li>Teachers used computational thinking strategies within core instruction, not just isolated activities.</li>
-          <li>School teams had a clearer path for strengthening computing education and technology instruction.</li>
-          <li>Technology integration was tied to academic learning goals, school themes, and real classroom practice.</li>
-        </ul>
-      </article>
-
-      <article class="card">
-        <h3>Example engagement</h3>
-        <ul class="proof-list">
-          <li>Professional development focused on computational thinking and integrated instruction</li>
-          <li>Project and lesson design support connecting computing with content areas</li>
-          <li>Guidance for improving or modifying existing technology and computing programs</li>
-        </ul>
       </article>
     </div>
   </div>
@@ -158,25 +154,19 @@
       <article class="card">
         <div class="step-number">01</div>
         <h3>Assess current instruction and programming</h3>
-        <p>
-          We examine how computational thinking, computing education, and technology instruction currently show up across the school.
-        </p>
+        <p>We examine how computational thinking, computing education, and technology instruction currently show up across the school.</p>
       </article>
 
       <article class="card">
         <div class="step-number">02</div>
         <h3>Design integrated approaches</h3>
-        <p>
-          We create lesson extensions, project ideas, and instructional supports that connect computing concepts with academic content and school priorities.
-        </p>
+        <p>We create lesson extensions, project ideas, and instructional supports that connect computing concepts with academic content and school priorities.</p>
       </article>
 
       <article class="card">
         <div class="step-number">03</div>
         <h3>Support implementation and improvement</h3>
-        <p>
-          We help educators apply, refine, and strengthen these approaches in classrooms and technology programs so the work becomes useful and sustainable.
-        </p>
+        <p>We help educators apply, refine, and strengthen these approaches so the work becomes useful and sustainable.</p>
       </article>
     </div>
   </div>
@@ -187,9 +177,7 @@
     <div class="cta-box">
       <div>
         <h2>Strengthen computational thinking and computing education in your school.</h2>
-        <p>
-          Start with a conversation about how your instruction, projects, and current programs can be improved through practical and integrated approaches.
-        </p>
+        <p>Start with a conversation about how your instruction, projects, and current programs can be improved through practical and integrated approaches.</p>
       </div>
       <a class="btn btn-primary" href="mailto:felix@codebronx.org?subject=Interested in CodeBronx">Start the Conversation</a>
     </div>
