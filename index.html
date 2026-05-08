@@ -16,17 +16,55 @@ permalink: /
     display: none !important;
   }
 
+  :root {
+    --cb-page-width: 1120px;
+    --cb-page-gutter: 48px;
+    --cb-section-y: 4.5rem;
+  }
+
   .container,
   .hero .container,
-  .hero-grid {
-    max-width: 1120px !important;
-    width: min(1120px, calc(100vw - 48px)) !important;
+  .hero-grid,
+  #services .container,
+  #proof .container,
+  #process .container,
+  .cta .container,
+  footer .container {
+    max-width: var(--cb-page-width) !important;
+    width: min(var(--cb-page-width), calc(100vw - var(--cb-page-gutter))) !important;
     margin-left: auto !important;
     margin-right: auto !important;
   }
 
+  section,
+  .hero,
+  #services,
+  #proof,
+  #process,
+  .cta {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  #services,
+  #proof,
+  #process,
+  .cta {
+    padding-top: var(--cb-section-y) !important;
+    padding-bottom: var(--cb-section-y) !important;
+  }
+
   .hero {
-    padding-top: 1.25rem;
+    padding-top: 1.25rem !important;
+    padding-bottom: var(--cb-section-y) !important;
+  }
+
+  .hero-grid,
+  .grid-3,
+  .proof-grid,
+  .steps,
+  .cta-box {
+    width: 100% !important;
   }
 
   .hero-grid {
@@ -36,19 +74,55 @@ permalink: /
     align-items: center;
   }
 
+  .grid-3,
+  .proof-grid,
+  .steps {
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  .grid-3,
+  .steps {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .proof-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .hero-card,
-  .mock-window {
+  .mock-window,
+  .card,
+  .cta-box {
     width: 100%;
   }
 
+  .section-title,
+  .section-copy {
+    max-width: 760px;
+  }
+
   @media (max-width: 860px) {
-    .container,
-    .hero .container,
-    .hero-grid {
-      width: min(100%, calc(100vw - 32px)) !important;
+    :root {
+      --cb-page-gutter: 32px;
+      --cb-section-y: 3.25rem;
     }
 
-    .hero-grid {
+    .container,
+    .hero .container,
+    .hero-grid,
+    #services .container,
+    #proof .container,
+    #process .container,
+    .cta .container,
+    footer .container {
+      width: min(100%, calc(100vw - var(--cb-page-gutter))) !important;
+    }
+
+    .hero-grid,
+    .grid-3,
+    .proof-grid,
+    .steps {
       grid-template-columns: 1fr;
     }
   }
